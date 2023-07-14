@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booklet</title>
+    
+</head>
+<body>
+    <form action="{{ url_for ('create_order') }}" method="post">
+        {{ form.csrf_token() }}
+        {{ form.name.label() }}: {{ form.name() }}
+        <br>
+        {{ form.price.label() }}: {{ form.price() }}
+        <br>
+        {{ form.quantity.label() }}: {{ form.quantity() }}
+        <br>
+        {{ form.type_of_sale.label() }}: {{ form.type_of_sale() }}
+        <br>
+        <button type="submit">botão</button>
+    </form>
+</body>
+</html>
