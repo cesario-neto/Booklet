@@ -1,5 +1,6 @@
 from datetime import datetime
 import csv
+import os
 
 
 class Booklet:
@@ -12,11 +13,13 @@ class Booklet:
         formatted_date = date.strftime('%d-%m-%Y')
         return formatted_date
 
-    @property
-    def get_current_date(self):
-        return self._current_date
+    def _creating_directory_for_csv(self):
+        if not os.path.exists('csv_reports'):
+            os.mkdir('csv_reports')
+        return None
 
     def add_order(self, product: dict):
+        self._creating_directory_for_csv()
         with open(f'csv_reports/{self._current_date}.csv', 'a', encoding='UTF-8', newline='') as csvfile:
             fieldnames = ['product', 'price', 'quantity', 'type_of_sale']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -30,3 +33,7 @@ class Booklet:
             })
 
         return None
+
+    @property
+    def get_current_date(self):
+        return self._current_date
