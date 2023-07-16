@@ -7,6 +7,7 @@ class Booklet:
     def __init__(self):
         self.id = id
         self._current_date = self._get_current_date()
+        self._file_path = f'csv_reports/{self._current_date}.csv'
 
     def _get_current_date(self):
         date = datetime.now()
@@ -20,8 +21,8 @@ class Booklet:
 
     def add_order(self, product: dict):
         self._creating_directory_for_csv()
-        file_path = f'csv_reports/{self._current_date}.csv'
-        with open(file_path, 'a', encoding='UTF-8', newline='') as csvfile:
+
+        with open(self._file_path, 'a', encoding='UTF-8', newline='') as csvfile:
             fieldnames = ['product', 'price', 'quantity', 'type_of_sale']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -38,3 +39,7 @@ class Booklet:
     @property
     def get_current_date(self):
         return self._current_date
+
+    @property
+    def get_csv_file_path(self):
+        return
