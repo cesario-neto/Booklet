@@ -1,0 +1,50 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10em;
+}
+
+.forms {
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 1px 1px #7FC2C2;
+    border-color: #7FC2C2;
+}
+
+.forms form {
+    padding: 1.5em;
+    background-color: #9DF2F2;
+    text-align: center;
+}
+
+.forms label {
+    display: block;
+}
+.forms input {
+    width: 7.8em;
+}
+
+.form-field {
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    text-align-last: center ;
+}
+
+.forms button {
+    background-color: #7FC2C2;
+    border: none;
+    margin-top: 1em;
+    padding: 0.4em 0.8em;
+    box-shadow: 1px 1px 2px;
+}
+
+.forms button:active {
+    box-shadow: 1px 1px 2px inset;
+    
+}
+
+/* generics */
+.name-field {
+    width: 8em;
+}

@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='style.css')}}">
     <title>booklet</title>
     
 </head>
 <body>
-    <form action="{{ url_for ('create_order') }}" method="post">
-        {{ form.csrf_token() }}
-        {{ form.name.label() }}: {{ form.name() }}
-        <br>
-        {{ form.price.label() }}: {{ form.price() }}
-        <br>
-        {{ form.quantity.label() }}: {{ form.quantity() }}
-        <br>
-        {{ form.type_of_sale.label() }}: {{ form.type_of_sale() }}
-        <br>
-        <button type="submit">botão</button>
-    </form>
+    <div class="content" >
+        <div class="forms">
+            <form action="{{ url_for ('create_order') }}" method="post" >
+                {{ form.csrf_token() }}
+                <div class="form-field">
+                    {{ form.name.label() }} {{ form.name(class="name-field") }}
+                </div>
+                <div class="form-field">
+                    {{ form.price.label() }} {{ form.price() }}
+                </div>
+                <div class="form-field">
+                    {{ form.quantity.label() }} {{ form.quantity() }}
+                </div>
+                <div class="form-field">
+                    {{ form.type_of_sale.label() }} {{ form.type_of_sale() }}
+                </div>
+                <button type="submit">botão</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
