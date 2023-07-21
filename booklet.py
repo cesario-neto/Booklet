@@ -7,7 +7,7 @@ class Booklet:
     def __init__(self):
         self.id = id
         self._current_date = self._get_current_date()
-        self._file_path = f'csv_reports/{self._current_date}.csv'
+        self._file_path = self._filepath_generator()
 
     def _get_current_date(self):
         date = datetime.now()
@@ -17,16 +17,24 @@ class Booklet:
     def _creating_directory_for_csv(self):
         if not os.path.exists('csv_reports'):
             os.mkdir('csv_reports')
-        return None
+        return None 
+
+    def _filepath_generator(self):
+        self._current_date = self._get_current_date()
+        return f'csv_reports/{self._current_date}.csv'
 
     def add_order(self, product: dict):
+        self._file_path = self._filepath_generator()
+        file_exists = os.path.isfile(self._file_path)
         self._creating_directory_for_csv()
 
         with open(self._file_path, 'a', encoding='UTF-8', newline='') as csvfile:
             fieldnames = ['product', 'price', 'quantity', 'type_of_sale']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-            writer.writeheader()
+            if not file_exists:
+                writer.writeheader()
+
             writer.writerow({
                 'product': product['product'],
                 'price': product['price'],
